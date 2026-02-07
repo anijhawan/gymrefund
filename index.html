@@ -301,15 +301,47 @@
     }
 
     .form-success {
-      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+    .form-success .success-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .form-success .success-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--color-white);
+    }
+    .form-success .success-heading {
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: var(--color-gray-900);
+      margin-bottom: 0.5rem;
+    }
+    .form-success .success-message {
+      font-size: 1rem;
+      color: var(--color-gray-500);
+    }
+    .form-success.error {
       padding: 0.875rem 1rem;
-      background: var(--color-accent-bg);
-      color: var(--color-accent);
+      background: #FEF2F2;
+      color: #DC2626;
       font-weight: 600;
       font-size: 0.9375rem;
       border-radius: var(--radius-md);
+      flex-direction: row;
     }
-    .form-success.error { background: #FEF2F2; color: #DC2626; }
 
     .proof-points {
       display: flex;
@@ -581,8 +613,11 @@
     .final-cta .form-row input::placeholder { color: rgba(255,255,255,0.5); }
     .final-cta .form-row input:focus { border-color: rgba(255,255,255,0.5); box-shadow: 0 0 0 3px rgba(255,255,255,0.1); }
 
-    .final-cta .form-success { background: rgba(255,255,255,0.15); color: var(--color-white); }
-    .final-cta .form-success.error { background: rgba(220,38,38,0.2); }
+    .final-cta .form-success .success-heading { color: var(--color-white); }
+    .final-cta .form-success .success-message { color: rgba(255,255,255,0.7); }
+    .final-cta .form-success .success-icon { background: var(--color-white); }
+    .final-cta .form-success .success-icon svg { color: var(--color-accent); }
+    .final-cta .form-success.error { background: rgba(220,38,38,0.2); color: var(--color-white); }
 
     .final-cta .form-optional input,
     .final-cta .form-optional select {
@@ -775,8 +810,8 @@
             <input type="email" name="email" id="hero-email" placeholder="Enter your email" required autocomplete="email" aria-label="Email address">
             <button type="submit" class="btn-primary">Start My Refund</button>
           </div>
-          <div class="form-success" role="alert" aria-live="polite" hidden></div>
         </form>
+        <div class="form-success" role="alert" aria-live="polite" hidden></div>
 
         <div class="proof-points">
           <div class="proof-point">
@@ -979,7 +1014,7 @@
     <section class="final-cta" id="final-cta" aria-labelledby="final-cta-heading">
       <div class="container">
         <h2 id="final-cta-heading">Ready to Get Your Money Back?</h2>
-        <p class="cta-subtitle">Average claim resolved in 14 days. No upfront costs. Ever.</p>
+        <p class="cta-subtitle">Submit your documentation and let us do the work. No upfront costs.</p>
 
         <form class="hero-form" name="email-capture-footer" method="POST" data-netlify="true" novalidate>
           <input type="hidden" name="form-name" value="email-capture-footer">
@@ -1001,10 +1036,10 @@
           <div class="form-row">
             <label for="footer-email" class="sr-only">Email address</label>
             <input type="email" name="email" id="footer-email" placeholder="Enter your email" required autocomplete="email" aria-label="Email address">
-            <button type="submit" class="btn-primary">Get My Refund</button>
+            <button type="submit" class="btn-primary">Start My Refund</button>
           </div>
-          <div class="form-success" role="alert" aria-live="polite" hidden></div>
         </form>
+        <div class="form-success" role="alert" aria-live="polite" hidden></div>
       </div>
     </section>
   </main>
@@ -1060,7 +1095,7 @@
       // ─── Form Handling ───
       document.querySelectorAll('form[data-netlify="true"]').forEach(function(form) {
         var emailInput = form.querySelector('input[type="email"]');
-        var successDiv = form.querySelector('.form-success');
+        var successDiv = form.nextElementSibling;
         var submitBtn = form.querySelector('button[type="submit"]');
         var originalText = submitBtn.textContent;
 
@@ -1086,13 +1121,13 @@
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(formData).toString()
           }).then(function() {
+            form.style.display = 'none';
             successDiv.hidden = false;
-            successDiv.textContent = "Thank you! We'll be in touch within 24 hours.";
+            successDiv.innerHTML = '<div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="success-heading">You\'re all set!</div><div class="success-message">We\'ll contact you within 24 hours to get started on your refund.</div>';
             successDiv.classList.remove('error');
-            form.reset();
           }).catch(function() {
             successDiv.hidden = false;
-            successDiv.textContent = 'Something went wrong. Please try again.';
+            successDiv.innerHTML = 'Something went wrong. Please try again.';
             successDiv.classList.add('error');
           }).finally(function() {
             submitBtn.disabled = false;
