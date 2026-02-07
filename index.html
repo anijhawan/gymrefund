@@ -155,12 +155,8 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--color-primary);
     }
-    .logo svg { width: 28px; height: 28px; }
+    .logo img { height: 60px; width: auto; }
 
     .nav-menu {
       display: none;
@@ -273,7 +269,8 @@
       margin-bottom: 0.75rem;
     }
 
-    .form-optional input {
+    .form-optional input,
+    .form-optional select {
       width: 100%;
       padding: 0.9375rem 1rem;
       font-size: 1rem;
@@ -283,9 +280,25 @@
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
       background: var(--color-white);
+      appearance: none;
     }
-    .form-optional input:focus { border-color: var(--color-primary-light); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+    .form-optional select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+    .form-optional input:focus,
+    .form-optional select:focus { border-color: var(--color-primary-light); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
     .form-optional input::placeholder { color: var(--color-gray-300); }
+
+    .gym-other-wrapper {
+      grid-column: 1 / -1;
+    }
+    .gym-other-wrapper input {
+      width: 100%;
+    }
 
     .form-success {
       margin-top: 1rem;
@@ -316,28 +329,6 @@
     .proof-point svg { width: 20px; height: 20px; color: var(--color-accent); flex-shrink: 0; }
 
     /* ─── Social Proof ─── */
-    .social-proof {
-      padding: 5rem 0;
-      background: var(--color-gray-50);
-    }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1.25rem;
-      background: var(--color-primary);
-      color: var(--color-white);
-      font-size: 0.875rem;
-      font-weight: 600;
-      border-radius: 999px;
-      margin-bottom: 2.5rem;
-    }
-
-    .social-proof .section-header {
-      text-align: center;
-    }
-
     .section-title {
       font-size: 1.75rem;
       font-weight: 800;
@@ -352,58 +343,6 @@
       max-width: 540px;
       margin: 0 auto 3rem;
     }
-
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    .testimonial-card {
-      background: var(--color-white);
-      border-radius: var(--radius-xl);
-      padding: 1.75rem;
-      box-shadow: var(--shadow-md);
-      border-left: 4px solid var(--color-accent-light);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .testimonial-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-
-    .testimonial-stars {
-      display: flex;
-      gap: 2px;
-      margin-bottom: 1rem;
-    }
-    .testimonial-stars svg { width: 18px; height: 18px; color: var(--color-amber); }
-
-    .testimonial-quote {
-      font-size: 0.9375rem;
-      line-height: 1.7;
-      color: var(--color-gray-700);
-      margin-bottom: 1.25rem;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .testimonial-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--color-primary);
-      color: var(--color-white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.875rem;
-      flex-shrink: 0;
-    }
-    .testimonial-name { font-weight: 700; font-size: 0.9375rem; color: var(--color-gray-900); }
-    .testimonial-detail { font-size: 0.8125rem; color: var(--color-accent); font-weight: 600; }
 
     /* ─── How It Works ─── */
     .how-it-works {
@@ -645,13 +584,19 @@
     .final-cta .form-success { background: rgba(255,255,255,0.15); color: var(--color-white); }
     .final-cta .form-success.error { background: rgba(220,38,38,0.2); }
 
-    .final-cta .form-optional input {
+    .final-cta .form-optional input,
+    .final-cta .form-optional select {
       border-color: rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.1);
+      background-color: rgba(255,255,255,0.1);
       color: var(--color-white);
     }
+    .final-cta .form-optional select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.5)' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    }
+    .final-cta .form-optional select option { color: var(--color-gray-900); }
     .final-cta .form-optional input::placeholder { color: rgba(255,255,255,0.5); }
-    .final-cta .form-optional input:focus { border-color: rgba(255,255,255,0.5); box-shadow: 0 0 0 3px rgba(255,255,255,0.1); }
+    .final-cta .form-optional input:focus,
+    .final-cta .form-optional select:focus { border-color: rgba(255,255,255,0.5); box-shadow: 0 0 0 3px rgba(255,255,255,0.1); }
 
     /* ─── Footer ─── */
     .footer {
@@ -669,14 +614,10 @@
     }
 
     .footer-logo {
-      font-size: 1.125rem;
-      font-weight: 800;
-      color: var(--color-white);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
     }
-    .footer-logo svg { width: 24px; height: 24px; }
+    .footer-logo img { height: 50px; width: auto; }
 
     .footer-links {
       display: flex;
@@ -744,8 +685,6 @@
       .form-row input { flex: 1; }
       .form-row .btn-primary { width: auto; white-space: nowrap; flex-shrink: 0; }
 
-      .testimonial-grid { grid-template-columns: repeat(3, 1fr); }
-
       .steps { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 
       .trust-badges { flex-direction: row; justify-content: center; flex-wrap: wrap; }
@@ -787,10 +726,7 @@
   <header class="header" role="banner">
     <div class="container">
       <a href="#" class="logo" aria-label="GymRefund Home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        </svg>
-        GymRefund
+        <img src="assets/logo.png" alt="GymRefund">
       </a>
 
       <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
@@ -801,7 +737,6 @@
         <ul>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#social-proof">Testimonials</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
         <div class="nav-cta">
@@ -815,19 +750,30 @@
     <!-- ─── Hero ─── -->
     <section class="hero" id="hero" aria-labelledby="hero-heading">
       <div class="container">
-        <h1 id="hero-heading">Still Getting Charged After Canceling Your Gym?</h1>
+        <h1 id="hero-heading">Unfair Gym Charges? We'll Get Your Money Back.</h1>
         <p class="subheadline">We'll fight it for you. Only pay if we win.</p>
 
         <form class="hero-form" name="email-capture" method="POST" data-netlify="true" novalidate>
           <input type="hidden" name="form-name" value="email-capture">
           <div class="form-optional">
             <input type="text" name="name" placeholder="Your Name" autocomplete="name" aria-label="Your name (optional)">
-            <input type="text" name="gym" placeholder="Gym Name" aria-label="Gym name (optional)">
+            <select name="gym" aria-label="Gym name (optional)" class="gym-select">
+              <option value="" disabled selected>Gym Name</option>
+              <option value="Planet Fitness">Planet Fitness</option>
+              <option value="LA Fitness">LA Fitness</option>
+              <option value="24 Hour Fitness">24 Hour Fitness</option>
+              <option value="Anytime Fitness">Anytime Fitness</option>
+              <option value="Gold's Gym">Gold's Gym</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="gym-other-wrapper" hidden>
+              <input type="text" name="gym_other" placeholder="Enter gym name" aria-label="Enter gym name">
+            </div>
           </div>
           <div class="form-row">
             <label for="hero-email" class="sr-only">Email address</label>
             <input type="email" name="email" id="hero-email" placeholder="Enter your email" required autocomplete="email" aria-label="Email address">
-            <button type="submit" class="btn-primary">Get My Refund</button>
+            <button type="submit" class="btn-primary">Start My Refund</button>
           </div>
           <div class="form-success" role="alert" aria-live="polite" hidden></div>
         </form>
@@ -849,73 +795,6 @@
       </div>
     </section>
 
-    <!-- ─── Social Proof ─── -->
-    <section class="social-proof" id="social-proof" aria-labelledby="social-proof-heading">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">Join 500+ people who've recovered their money</div>
-          <h2 class="section-title" id="social-proof-heading">Real Stories, Real Refunds</h2>
-          <p class="section-subtitle">Don't just take our word for it. Here's what our clients have to say.</p>
-        </div>
-
-        <div class="testimonial-grid">
-          <div class="testimonial-card fade-in">
-            <div class="testimonial-stars" aria-label="5 out of 5 stars">
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            </div>
-            <p class="testimonial-quote">"I canceled my membership in March but kept getting charged $49/month for five months. GymRefund got all $245 back within 10 days. I wish I'd found them sooner."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">SM</div>
-              <div>
-                <div class="testimonial-name">Sarah M.</div>
-                <div class="testimonial-detail">Recovered $245 from FitLife Gym</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card fade-in">
-            <div class="testimonial-stars" aria-label="5 out of 5 stars">
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            </div>
-            <p class="testimonial-quote">"After moving states, my old gym refused to cancel my contract. They said I had to come in person. GymRefund handled everything and I got $847 back."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">JR</div>
-              <div>
-                <div class="testimonial-name">James R.</div>
-                <div class="testimonial-detail">Recovered $847 from IronWorks Fitness</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card fade-in">
-            <div class="testimonial-stars" aria-label="5 out of 5 stars">
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            </div>
-            <p class="testimonial-quote">"I thought I was stuck paying for a membership I never used. The process was incredibly simple — just filled out the form and they took care of the rest."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">ML</div>
-              <div>
-                <div class="testimonial-name">Maria L.</div>
-                <div class="testimonial-detail">Recovered $396 from PureGym Plus</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ─── How It Works ─── -->
     <section class="how-it-works" id="how-it-works" aria-labelledby="how-heading">
       <div class="container">
@@ -932,7 +811,7 @@
               </svg>
             </div>
             <h3>Tell Us Your Story</h3>
-            <p>Fill out our quick form in 2 minutes. Tell us about the charges and your gym.</p>
+            <p>Fill out our quick form in 2 minutes. Tell us about the charges, your gym, and upload any supporting documentation.</p>
           </div>
 
           <div class="step fade-in">
@@ -1106,7 +985,18 @@
           <input type="hidden" name="form-name" value="email-capture-footer">
           <div class="form-optional">
             <input type="text" name="name" placeholder="Your Name" autocomplete="name" aria-label="Your name (optional)">
-            <input type="text" name="gym" placeholder="Gym Name" aria-label="Gym name (optional)">
+            <select name="gym" aria-label="Gym name (optional)" class="gym-select">
+              <option value="" disabled selected>Gym Name</option>
+              <option value="Planet Fitness">Planet Fitness</option>
+              <option value="LA Fitness">LA Fitness</option>
+              <option value="24 Hour Fitness">24 Hour Fitness</option>
+              <option value="Anytime Fitness">Anytime Fitness</option>
+              <option value="Gold's Gym">Gold's Gym</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="gym-other-wrapper" hidden>
+              <input type="text" name="gym_other" placeholder="Enter gym name" aria-label="Enter gym name">
+            </div>
           </div>
           <div class="form-row">
             <label for="footer-email" class="sr-only">Email address</label>
@@ -1124,10 +1014,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-          GymRefund
+          <img src="assets/logo.png" alt="GymRefund">
         </div>
         <nav class="footer-links" aria-label="Footer navigation">
           <a href="#">Privacy Policy</a>
@@ -1215,6 +1102,22 @@
 
         emailInput.addEventListener('input', function() {
           emailInput.setCustomValidity('');
+        });
+      });
+
+      // ─── Gym Select "Other" Toggle ───
+      document.querySelectorAll('.gym-select').forEach(function(select) {
+        var wrapper = select.closest('.form-optional').querySelector('.gym-other-wrapper');
+        var otherInput = wrapper.querySelector('input');
+
+        select.addEventListener('change', function() {
+          if (select.value === 'other') {
+            wrapper.hidden = false;
+            otherInput.focus();
+          } else {
+            wrapper.hidden = true;
+            otherInput.value = '';
+          }
         });
       });
 
